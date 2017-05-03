@@ -4,6 +4,9 @@ import android.app.Application;
 
 import android.widget.ArrayAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,7 +17,7 @@ import hu.i_host.thespiralkata.SpiralLine;
 import hu.i_host.thespiralkata.SpiralTable;
 
 @Module
-public class SpiralActivityModule {
+class SpiralActivityModule {
 
     @Provides
     @Singleton
@@ -31,7 +34,20 @@ public class SpiralActivityModule {
 
     @Provides
     @Singleton
-    SpiralTable provideSpiralTable(SpiralLine line) {
-        return new SpiralTable(line);
+    SpiralTable provideSpiralTable(SpiralLine line, List<String> directionList) {
+        return new SpiralTable(line, directionList);
+    }
+
+    @Provides
+    @Singleton
+    List<String> provideDirectionList() {
+        List<String> list = new ArrayList<>();
+
+        list.add("right");
+        list.add("down");
+        list.add("left");
+        list.add("up");
+
+        return list;
     }
 }

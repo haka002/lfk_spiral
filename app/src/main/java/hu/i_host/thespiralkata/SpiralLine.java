@@ -2,27 +2,27 @@ package hu.i_host.thespiralkata;
 
 public class SpiralLine {
 
-    int mStartX;
-    int mStartY;
-    int mLength;
+    private int mStartX;
+    private int mStartY;
+    private int mLength;
 
     public SpiralLine() {
-        reset();
+        init();
     }
 
-    public int getStartX() {
+    int getStartX() {
         return mStartX;
     }
 
-    public int getStartY() {
+    int getStartY() {
         return mStartY;
     }
 
-    public int getLength() {
+    int getLength() {
         return mLength;
     }
 
-    public void down(int[][] matrix) {
+    void down(int[][] matrix) {
         int i = 0;
 
         for (; i < mLength; i++) {
@@ -33,7 +33,7 @@ public class SpiralLine {
         setLastXY(mStartX, mStartY + (i - 1));
     }
 
-    public void up(int[][] matrix) {
+    void up(int[][] matrix) {
         int i = 0;
 
         for (;i < mLength; i++) {
@@ -44,7 +44,7 @@ public class SpiralLine {
         setLastXY(mStartX, mStartY - (i - 1));
     }
 
-    public void left(int[][] matrix) {
+    void left(int[][] matrix) {
         int i = 0;
 
         for (; i < mLength; i++) {
@@ -55,7 +55,7 @@ public class SpiralLine {
         setLastXY(mStartX - (i - 1), mStartY);
     }
 
-    public void right(int[][] matrix) {
+    void right(int[][] matrix) {
         int i = 0;
 
         for (; i < mLength; i++) {
@@ -71,11 +71,11 @@ public class SpiralLine {
         mStartY = y;
     }
 
-    public void setLength(int length) {
+    void setLength(int length) {
         mLength = length;
     }
 
-    public void reset() {
+    void init() {
         mStartX = 0;
         mStartY = 1;
         mLength = 0;

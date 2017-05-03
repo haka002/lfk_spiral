@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/mainLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="hu.i_host.thespiralkata.SpiralActivity">
+    >
 
     <TextView
-        android:text="Please give me the dimension for the spiral between 5 and 10."
-        android:textAlignment="center"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/textView"/>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="150dp"
-    />
-
-    <EditText
-        android:id="@+id/result"
-        android:layout_marginTop="90dp"
-        android:gravity="left"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:maxLines="5"
-        android:lines="5"
-        android:inputType="textMultiLine"/>
+        android:gravity="center_horizontal"
+        android:text="Please give me the dimension for the spiral between 5 and 15."
+        android:textAlignment="center"
+        android:textSize="18sp"/>
 
+        <TextView
+            android:id="@+id/spiinerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a dimension: "
+            android:layout_below="@+id/textView"
+            android:textSize="18sp"
+            android:layout_marginTop="7dp"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_toEndOf="@+id/spiinerText"
+            android:layout_alignTop="@+id/spiinerText"
+            />
+
+    <TextView
+        android:id="@+id/result"
+        android:textColor="@android:color/black"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:letterSpacing="0.5"
+        android:lines="5"
+        android:maxLines="5"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_marginTop="8sp"/>
 </RelativeLayout>

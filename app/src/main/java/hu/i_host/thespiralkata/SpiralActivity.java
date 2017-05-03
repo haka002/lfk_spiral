@@ -1,30 +1,24 @@
 package hu.i_host.thespiralkata;
 
-import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
-import butterknife.OnTouch;
 
 public class SpiralActivity extends AppCompatActivity {
-    @BindView(R.id.spinner) Spinner mSpinner;
+    @BindView(R.id.spinner)
+    Spinner mSpinner;
+
     @BindView(R.id.result)
-    EditText result;
+    TextView result;
 
     @Inject
     ArrayAdapter mAdapter;
@@ -37,8 +31,10 @@ public class SpiralActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spiral);
 
+        // DI injects the objects
         ((MainApplication) getApplication()).getSpiralActivityComponent().inject(this);
 
+        // For binding view
         ButterKnife.bind(this);
 
         // Specify the layout to use when the list of choices appears
@@ -49,13 +45,12 @@ public class SpiralActivity extends AppCompatActivity {
 
     @OnItemSelected(R.id.spinner)
     public void spinnerClick() {
-
         int dimension = Integer.parseInt((String)mSpinner.getSelectedItem());
 
         result.setMaxLines(dimension);
         result.setLines(dimension);
 
-        mSpiralTable.reset();
+        mSpiralTable.init();
         int[][] matrix = mSpiralTable.go(dimension);
 
         String matrixString = "";
@@ -70,8 +65,6 @@ public class SpiralActivity extends AppCompatActivity {
         result.setText(matrixString);
 
         Toast.makeText(this,
-                "almafa 1" +
-                "almafa 2" +
-                "almafa 3", Toast.LENGTH_SHORT).show();
+                "The Spiral table generate in " + Integer.toString(dimension) + " dimensions.", Toast.LENGTH_SHORT).show();
     }
 }
